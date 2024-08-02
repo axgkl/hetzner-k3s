@@ -157,13 +157,13 @@ metadata:
     kubernetes.io/ingress.class: nginx     # <<<--- Add annotation
 spec:
   rules:
-  - host: hello-world.IP_FROM_STEP_13.nip.io # <<<--- ADD IP FROM THE STEP 13.
+  - host: hello-world.IP_FROM_STEP_13.nip.io # <<<--- ADD IP FROM THE STEP 16.
   ....
 ```
 
 19. Install hello-world app: `kubectl apply -f hello-world.yaml`
 20. Check http://hello-world.IP_FROM_STEP_13.nip.io
-You should see the RANCHER Hello world! page.
+You should see the RANCHER Hello world! page and also your own current public IP address in the `X-Forwarded-For` header if you did enable "proxy-protocol" for loadbalancer and nginx, as shown above.
 "host.IP_FROM_STEP_13.nip.io" (the key part is ".nip.io") is just a quick way to test things without configuring DNS (a query to a hostname ending in nip.io simply returns the IP address it finds in the hostname itself).
 21. In order to connect yourDomain.com, you need to:
   - assign IP address from the step 13 to your domain in DNS panel of your domain registrar
